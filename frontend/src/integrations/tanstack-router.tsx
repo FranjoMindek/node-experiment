@@ -67,7 +67,7 @@ const routeTree = rootRoute.addChildren([
   formComplexDemoRoute,
   formSimpleDemoRoute,
   queryDemoRoute,
-  tableDemoRoute
+  tableDemoRoute,
 ]);
 
 const tanstackRouter = createRouter({
