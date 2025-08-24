@@ -1,15 +1,18 @@
-# Elysia with Bun runtime
+# Bun + Elysia + Drizzle + BetterAuth
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
+## Quick Start
 
-## Development
-To start the development server run:
 ```bash
+bun install
+bun run db:start
+bun run migration:migrate
 bun run dev
 ```
 
-Open http://localhost:3000/ with your browser to see the result.
+## Database Commands
+
+- `bun run db:start` - Start PostgreSQL with Docker
+- `bun run db:stop` - Stop PostgreSQL Docker database
+- `bun run db:studio` - Open Drizzle Studio (must have database running)
+- `bun run migration:generate` - Generate migrations
+- `bun run migration:migrate` - Run migrations
