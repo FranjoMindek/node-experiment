@@ -1,36 +1,25 @@
 {
-  "exclude": ["dist", "node_modules"],
-
   "compilerOptions": {
-    // Environment setup
-    "lib": ["ESNext", "DOM"],
-    "target": "ESNext",
-    "module": "Preserve",
-    "moduleDetection": "force",
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx",
-    "allowJs": true,
-
-    // Bundler mode
+    "target": "esnext",
+    "lib": [
+      "ESNext"
+    ],
+    "module": "preserve",
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "noEmit": true,
-
+    "types": [
+      "bun-types"
+    ],
     // Best practices
     "strict": true,
-    "skipLibCheck": true,
-    "noUncheckedSideEffectImports": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-
-    // Paths
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   }
 }

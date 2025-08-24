@@ -1,6 +1,10 @@
-import { drizzle } from "drizzle-orm/better-sqlite3";
-import { env } from "@/env";
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { Pool } from 'pg';
+import { env } from '../env';
 
-const db = drizzle({ connection: { source: env.DB_FILE_NAME } });
+const postgresPool = new Pool({
+  connectionString: env.DATABASE_URL,
+});
+const db = drizzle({ client: postgresPool });
 
 export { db };

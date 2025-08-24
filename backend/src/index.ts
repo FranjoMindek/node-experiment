@@ -1,24 +1,33 @@
-import { serve } from "@hono/node-server";
-import { Hono } from "hono";
-import { authRouter } from "@/auth/route";
+import { swagger } from '@elysiajs/swagger';
+import { Elysia } from "elysia";
+import { betterAuth, generateBetterAuthOpenAPISchema } from "./auth";
 
-const app = new Hono();
+const betterAuthOpenAPISchema = await generateBetterAuthOpenAPISchema();
+console.log(betterAuthOpenAPISchema)
 
-app.get("/", (context) => {
-  return context.text("Hello Hono!");
-});
+const app = new Elysia()
+  .use(
+    swagger({
+      documentation: {
+        ...betterAuthOpenAPISchema as any,
+        info: {
+          title: "Your App API",
+          version: "0.1.0",
+        },
 
-const routes = [authRouter] as const;
-routes.forEach((route) => {
-  app.basePath("/api").route("/", route);
-});
+      }
+    })
+  )
+  .mount(betterAuth.handler)
+  .group(
+    '/api',
+    (app) => {
+      app.get("/", () => "Hello Elysia")
+      return app;
+    }
+  )
+  .listen(3001);
 
-serve(
-  {
-    port: 3001,
-    fetch: app.fetch,
-  },
-  (addressInfo) => {
-    console.log(`Server is running at http://${addressInfo.address}:${addressInfo.port}`);
-  },
+console.log(
+  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
 );
