@@ -1,10 +1,10 @@
+import { HomePage } from "@/features/home/HomePage";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
-import App from "../src/App.tsx";
 
-describe("App", () => {
+describe("HomePage", () => {
   test("renders", () => {
-    render(<App />);
+    render(<HomePage />);
     expect(screen.getByText("Learn React")).toBeDefined();
   });
 });

@@ -9,7 +9,12 @@ import globals from "globals";
 import eslintTypescript from "typescript-eslint";
 
 export default defineConfig([
-  { files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: globals.browser } },
+  {
+    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+    plugins: { js },
+    extends: ["js/recommended"],
+    languageOptions: { globals: globals.browser },
+  },
   eslintTypescript.configs.recommended,
   eslintPluginReact.configs.flat.recommended,
   eslintPluginReact.configs.flat["jsx-runtime"],
@@ -29,16 +34,16 @@ export default defineConfig([
     semi: true,
     severity: "error",
   }),
-  // Stylistic settings
+  // Stylistic overrides
   {
     rules: {
       "@stylistic/jsx-one-expression-per-line": [
         "error",
-        { allow: "single-line" },
+        { allow: "single-line" }, // "single-child" is too restrictive
       ],
     },
   },
-  // Functional settings
+  // Functional overrides
   {
     settings: {
       react: {
@@ -51,6 +56,12 @@ export default defineConfig([
         ignore: [
           String.raw`.*\.(jsx|tsx)`,
         ],
+      }],
+      "jsx-a11y/label-has-associated-control": [2, {
+        labelComponents: ["Label"],
+        labelAttributes: ["label"],
+        controlComponents: ["Input"],
+        depth: 2,
       }],
     },
   },

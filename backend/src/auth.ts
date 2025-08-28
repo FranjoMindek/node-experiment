@@ -26,7 +26,8 @@ export const betterAuth = generateBetterAuth({
   plugins: [
     openAPI()
   ],
-  basePath: '/api/auth'
+  basePath: '/api/auth',
+  baseURL: env.APP_URL,
 });
 
 export async function generateBetterAuthOpenAPISchema() {

@@ -1,8 +1,10 @@
-# deps
 node_modules
 build
+
+# sqlite
 *.db
 
+# env
 .env
 .env.*
 !.env*.example

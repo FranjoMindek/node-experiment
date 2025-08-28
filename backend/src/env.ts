@@ -1,4 +1,8 @@
+import dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
 import z from "zod";
+
+dotenvExpand.expand(dotenv.config())
 
 const envSchema = z.object({
   DATABASE_USER: z.string(),
@@ -7,11 +11,11 @@ const envSchema = z.object({
   DATABASE_PORT: z.coerce.number().min(1).max(65535),
   DATABASE_NAME: z.string(),
   DATABASE_URL: z.string(),
+  APP_PORT: z.coerce.number().min(1).max(65535),
+  APP_URL: z.url(),
   BETTER_AUTH_SECRET: z.string(),
-  BETTER_AUTH_URL: z.url(),
   FRONTEND_URL: z.url(),
+  NODE_ENV: z.enum(["development", "production"]),
 });
 
-const env = envSchema.parse(process.env);
-
-export { env };
+export const env = envSchema.parse(process.env);

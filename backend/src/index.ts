@@ -1,26 +1,33 @@
 import { swagger } from '@elysiajs/swagger';
 import { Elysia } from "elysia";
 import { betterAuth, generateBetterAuthOpenAPISchema } from "./auth";
-
-const betterAuthOpenAPISchema = await generateBetterAuthOpenAPISchema();
-console.log(betterAuthOpenAPISchema)
+import { env } from './env';
 
 const app = new Elysia()
   .use(
     swagger({
       documentation: {
-        ...betterAuthOpenAPISchema as any,
+        ...(await generateBetterAuthOpenAPISchema()) as any,
         info: {
           title: "Your App API",
           version: "0.1.0",
         },
-
+        servers: [
+          {
+            url: env.APP_URL,
+          }
+        ],
       }
     })
   )
   .mount(betterAuth.handler)
   .group(
     '/api',
+    {
+      detail: {
+        tags: ['API']
+      }
+    },
     (app) => {
       app.get("/", () => "Hello Elysia")
       return app;
