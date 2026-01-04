@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';
-import dotenvExpand from 'dotenv-expand';
+import dotenv from "dotenv";
+import dotenvExpand from "dotenv-expand";
 import z from "zod";
 
-dotenvExpand.expand(dotenv.config())
+dotenvExpand.expand(dotenv.config());
 
 const envSchema = z.object({
   DATABASE_USER: z.string(),

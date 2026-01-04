@@ -1,16 +1,12 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "module": "preserve",
     "moduleResolution": "bundler",
-    "types": [
-      "bun-types"
-    ],
+    "types": ["bun-types"],
     "skipLibCheck": true,
-    
+
     // Best practices
     "strict": true,
     "noUnusedLocals": true,
@@ -21,6 +17,6 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true
   }
 }

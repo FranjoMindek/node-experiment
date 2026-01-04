@@ -18,7 +18,7 @@ const app = new Elysia()
           },
         ],
       },
-    })
+    }),
   )
   .mount(betterAuth.handler)
   .group(
@@ -31,12 +31,12 @@ const app = new Elysia()
     (app) => {
       app.get("/", () => "Hello Elysia");
       return app;
-    }
+    },
   )
   .listen(3001);
 
 console.log(
   `🦊 Elysia is running at ${app.server?.url}!
 
-Visit the OpenAPI schema at: ${app.server?.url}swagger.`
+Visit the OpenAPI schema at: ${app.server?.url}swagger.`,
 );

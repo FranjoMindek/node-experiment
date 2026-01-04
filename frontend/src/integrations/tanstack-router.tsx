@@ -1,5 +1,5 @@
-import { FormComplexDemoPage } from "@/features/demo/from-demo/FormComplexDemoPage.tsx";
-import { FormSimpleDemoPage } from "@/features/demo/from-demo/FormSimpleDemoPage.tsx";
+import { LoginPage } from "@/features/auth/LoginPage.tsx";
+import { RegisterPage } from "@/features/auth/RegisterPage.tsx";
 import { HomePage } from "@/features/home/HomePage.tsx";
 import Header from "@/shared/components/Header.tsx";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -36,19 +36,19 @@ const indexRoute = createRoute({
   component: HomePage,
 });
 
-const formSimpleDemoRoute = createRoute({
+const loginRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/demo/form/simple",
-  component: FormSimpleDemoPage,
+  path: "/login",
+  component: LoginPage,
 });
 
-const formComplexDemoRoute = createRoute({
+const registerRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/demo/form/complex",
-  component: FormComplexDemoPage,
+  path: "/register",
+  component: RegisterPage,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, formComplexDemoRoute, formSimpleDemoRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, loginRoute, registerRoute]);
 
 const tanstackRouter = createRouter({
   routeTree,

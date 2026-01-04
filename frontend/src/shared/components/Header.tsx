@@ -8,10 +8,10 @@ export default function Header() {
           <Link to="/">Home</Link>
         </div>
         <div className="px-2 font-bold">
-          <Link to="/demo/form/simple">Simple Form</Link>
+          <Link to="/login">Login</Link>
         </div>
         <div className="px-2 font-bold">
-          <Link to="/demo/form/complex">Address Form</Link>
+          <Link to="/register">Register</Link>
         </div>
       </nav>
     </header>
