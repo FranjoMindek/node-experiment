@@ -31,6 +31,7 @@ export default defineConfig([
       },
     },
     rules: {
+      // TODO: decide if I want components to be a special case.
       "unicorn/filename-case": [
         "error",
         {
@@ -38,6 +39,7 @@ export default defineConfig([
           ignore: [String.raw`.*\.(jsx|tsx)`],
         },
       ],
+      // TODO: see why I made this override.
       "jsx-a11y/label-has-associated-control": [
         2,
         {
