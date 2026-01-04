@@ -30,14 +30,20 @@ export const betterAuth = generateBetterAuth({
   baseURL: env.APP_URL,
 });
 
+/**
+ * Modifies the default BetterAuth OpenAPI schema by prepending
+ * the BetterAuth's `basePath` to the paths.
+ * 
+ * FIXME: Can we somehow not do this?
+ */
 export async function generateBetterAuthOpenAPISchema() {
   const baseSchema = await betterAuth.api.generateOpenAPISchema()
 
   const newPaths: typeof baseSchema.paths = {}
   for (const [path, operations] of Object.entries(baseSchema.paths)) {
     newPaths[`${betterAuth.options.basePath}${path}`] = operations
-    for (const key of Object.keys(operations) as Array<keyof typeof operations>) {
-      const operation = operations[key]!
+    for (const httpMethod of Object.keys(operations) as Array<keyof typeof operations>) {
+      const operation = operations[httpMethod]!
       operation.tags = [`Better Auth`]
     }
   }

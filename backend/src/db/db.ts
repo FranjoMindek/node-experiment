@@ -5,6 +5,6 @@ import { env } from '../env';
 const postgresPool = new Pool({
   connectionString: env.DATABASE_URL,
 });
-const db = drizzle({ client: postgresPool });
 
-export { db };
+export const db = drizzle({ client: postgresPool });
+

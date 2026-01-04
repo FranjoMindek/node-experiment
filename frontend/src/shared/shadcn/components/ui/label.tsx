@@ -4,10 +4,7 @@ import { cn } from "@/shared/shadcn/lib/utilities";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import type * as React from "react";
 
-function Label({
-  className,
-  ...properties
-}: React.ComponentProps<typeof LabelPrimitive.Root>) {
+function Label({ className, ...properties }: React.ComponentProps<typeof LabelPrimitive.Root>) {
   return (
     <LabelPrimitive.Root
       data-slot="label"

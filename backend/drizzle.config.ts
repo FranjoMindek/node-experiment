@@ -1,8 +1,6 @@
 import { defineConfig } from "drizzle-kit";
 import { env } from "./src/env";
 
-console.log(env.DATABASE_URL)
-
 export default defineConfig({
   out: "./src/db/drizzle",
   schema: "./src/db/schema/*",

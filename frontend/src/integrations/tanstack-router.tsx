@@ -48,11 +48,7 @@ const formComplexDemoRoute = createRoute({
   component: FormComplexDemoPage,
 });
 
-const routeTree = rootRoute.addChildren([
-  indexRoute,
-  formComplexDemoRoute,
-  formSimpleDemoRoute,
-]);
+const routeTree = rootRoute.addChildren([indexRoute, formComplexDemoRoute, formSimpleDemoRoute]);
 
 const tanstackRouter = createRouter({
   routeTree,
