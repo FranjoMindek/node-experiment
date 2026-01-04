@@ -1,7 +1,5 @@
 {
   "name": "frontend",
-  "private": true,
-  "type": "module",
   "scripts": {
     "dev": "vite --port 3000",
     "start": "vite --port 3000",
@@ -12,6 +10,7 @@
     "check": "biome check",
     "lint": "biome lint"
   },
+  "type": "module",
   "dependencies": {
     "@faker-js/faker": "^9.6.0",
     "@radix-ui/react-label": "^2.1.7",

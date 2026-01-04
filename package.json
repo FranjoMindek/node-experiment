@@ -1,4 +1,5 @@
 {
+  "name": "root",
   "dependencies": {},
   "devDependencies": {
     "prettier": "3.7.4"
