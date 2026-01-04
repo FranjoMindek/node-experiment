@@ -21,9 +21,16 @@
     "zod": "^4.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@types/pg": "^8.15.5",
     "bun-types": "latest",
-    "drizzle-kit": "^0.31.4"
+    "drizzle-kit": "^0.31.4",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-unicorn": "^62.0.0",
+    "globals": "^17.0.0",
+    "typescript-eslint": "^8.51.0"
   },
   "type": "module",
   "module": "src/index.js"

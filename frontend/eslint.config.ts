@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+// @ts-expect-error The a11y plugin is missing declaration files.
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import eslintPluginReact from "eslint-plugin-react";
