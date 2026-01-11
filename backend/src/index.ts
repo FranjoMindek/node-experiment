@@ -1,9 +1,11 @@
+import { cors } from "@elysiajs/cors";
 import { swagger } from "@elysiajs/swagger";
 import { Elysia } from "elysia";
 import { betterAuth, generateBetterAuthOpenAPISchema } from "./auth";
 import { env } from "./env";
 
 const app = new Elysia()
+  .use(cors())
   .use(
     swagger({
       documentation: {
@@ -29,7 +31,6 @@ const app = new Elysia()
       },
     },
     (app) => {
-      app.get("/", () => "Hello Elysia");
       return app;
     },
   )

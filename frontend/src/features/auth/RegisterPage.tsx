@@ -1,10 +1,12 @@
-import { authClient } from "@/shared/auth";
+import { useSignUpWithEmailAndPassword } from "@/api/endpoints/better-auth/better-auth.generated";
 import { FieldErrors } from "@/shared/components/FieldErrors";
 import { Input } from "@/shared/shadcn/components/ui/input";
 import { Label } from "@/shared/shadcn/components/ui/label";
 import { useForm } from "@tanstack/react-form";
 
 export function RegisterPage() {
+  const { mutate: signUpWithEmail } = useSignUpWithEmailAndPassword();
+
   const form = useForm({
     defaultValues: {
       name: "",
@@ -13,9 +15,12 @@ export function RegisterPage() {
       repeatPassword: "",
     },
     onSubmit: async ({ value }) => {
-      authClient.signUp.email({
-        ...value,
-        callbackURL: "",
+      signUpWithEmail({
+        data: {
+          name: value.name,
+          email: value.email,
+          password: value.password,
+        },
       });
     },
   });
@@ -100,6 +105,13 @@ export function RegisterPage() {
             </div>
           )}
         </form.Field>
+        <form.Subscribe selector={(state) => [state.canSubmit, state.isSubmitting]}>
+          {([canSubmit, isSubmitting]) => (
+            <button type="submit" disabled={!canSubmit}>
+              {isSubmitting ? "..." : "Submit"}
+            </button>
+          )}
+        </form.Subscribe>
       </form>
     </div>
   );
